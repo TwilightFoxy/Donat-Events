@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "format_version": "4.10",
+    "model_format": "free",
+    "box_uv": true
+  },
+  "name": "donation_alerts_totem",
+  "resolution": {
+    "width": 32,
+    "height": 32
+  },
+  "elements": [
+    {
+      "name": "alert_plate",
+      "from": [4, 4, 7],
+      "to": [12, 12, 9],
+      "color": 2,
+      "faces": {
+        "north": {"uv": [4, 4, 12, 12], "texture": 0},
+        "south": {"uv": [4, 4, 12, 12], "texture": 0},
+        "east": {"uv": [12, 4, 14, 12], "texture": 0},
+        "west": {"uv": [2, 4, 4, 12], "texture": 0},
+        "up": {"uv": [4, 2, 12, 4], "texture": 0},
+        "down": {"uv": [4, 12, 12, 14], "texture": 0}
+      }
+    }
+  ],
+  "outliner": ["alert_plate"],
+  "textures": [
+    {
+      "path": "assets/donat_events/textures/item/donation_alerts_totem.png",
+      "name": "donation_alerts_totem.png",
+      "folder": "item",
+      "namespace": "donat_events",
+      "id": "0",
+      "width": 32,
+      "height": 32,
+      "uv_width": 32,
+      "uv_height": 32
+    }
+  ]
+}

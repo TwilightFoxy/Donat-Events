@@ -1,0 +1,16 @@
+.gradle/
+build/
+run/
+runs/
+out/
+
+*.class
+*.log
+*.tmp
+
+.idea/
+.vscode/
+.eclipse/
+*.iml
+
+repo/
