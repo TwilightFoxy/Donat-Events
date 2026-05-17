@@ -13,7 +13,7 @@ import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
 
 public final class DonationTotemAnimation {
-    private static final Identifier DONATION_TEXTURE = Identifier.fromNamespaceAndPath(DonatEvents.MOD_ID, "textures/gui/donation_alerts_totem.png");
+    private static final Identifier DONATION_TEXTURE = Identifier.fromNamespaceAndPath(DonatEvents.MOD_ID, "textures/gui/donation_gift.png");
     private static final int DURATION_TICKS = 90;
 
     private final ClientConfigStore configStore;
@@ -56,7 +56,7 @@ public final class DonationTotemAnimation {
         int x = centerX - size / 2;
         int y = centerY - size / 2 - 26;
 
-        graphics.fill(0, 0, graphics.guiWidth(), graphics.guiHeight(), ARGB.colorFromFloat(alpha * 0.18F, 1.0F, 0.25F, 0.66F));
+        graphics.fill(0, 0, graphics.guiWidth(), graphics.guiHeight(), ARGB.colorFromFloat(alpha * 0.16F, 1.0F, 0.54F, 0.18F));
         graphics.blit(DONATION_TEXTURE, x, y, x + size, y + size, 0.0F, 1.0F, 0.0F, 1.0F);
 
         String text = donation.username() + " - " + donation.amountText();

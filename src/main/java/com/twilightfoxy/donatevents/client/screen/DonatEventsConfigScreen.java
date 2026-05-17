@@ -21,20 +21,23 @@ import org.jspecify.annotations.Nullable;
 public final class DonatEventsConfigScreen extends Screen {
     private static final int LEFT = 24;
     private static final int TOP = 38;
-    private static final int CLIENT_ID_LABEL_Y = 101;
-    private static final int CLIENT_ID_BOX_Y = 116;
-    private static final int CLIENT_SECRET_LABEL_Y = 149;
-    private static final int CLIENT_SECRET_BOX_Y = 164;
-    private static final int TOKEN_LABEL_Y = 197;
-    private static final int TOKEN_BOX_Y = 212;
-    private static final int TOKEN_ACTION_Y = 236;
-    private static final int TOKEN_STATUS_Y = 260;
-    private static final int NUMERIC_LABEL_Y = 283;
-    private static final int NUMERIC_BOX_Y = 298;
-    private static final int TOP_TEXT_LABEL_Y = 331;
-    private static final int TOP_TEXT_BOX_Y = 346;
-    private static final int EMPTY_TEXT_LABEL_Y = 379;
-    private static final int EMPTY_TEXT_BOX_Y = 394;
+    private static final int TOGGLE_WIDTH = 150;
+    private static final int TOGGLE_GAP = 12;
+    private static final int STATUS_Y = 94;
+    private static final int CLIENT_ID_LABEL_Y = 119;
+    private static final int CLIENT_ID_BOX_Y = 134;
+    private static final int CLIENT_SECRET_LABEL_Y = 167;
+    private static final int CLIENT_SECRET_BOX_Y = 182;
+    private static final int TOKEN_LABEL_Y = 215;
+    private static final int TOKEN_BOX_Y = 230;
+    private static final int TOKEN_ACTION_Y = 254;
+    private static final int TOKEN_STATUS_Y = 278;
+    private static final int NUMERIC_LABEL_Y = 301;
+    private static final int NUMERIC_BOX_Y = 316;
+    private static final int TOP_TEXT_LABEL_Y = 349;
+    private static final int TOP_TEXT_BOX_Y = 364;
+    private static final int EMPTY_TEXT_LABEL_Y = 397;
+    private static final int EMPTY_TEXT_BOX_Y = 412;
 
     private final @Nullable Screen parent;
     private final ClientConfigStore configStore;
@@ -75,30 +78,31 @@ public final class DonatEventsConfigScreen extends Screen {
         ClientDonationConfig config = configStore.get();
         int fieldWidth = Math.min(260, this.width - 48);
         int placementLeft = Math.max(LEFT, Math.min(this.width - 240, LEFT + fieldWidth + 24));
+        int rightColumnX = LEFT + TOGGLE_WIDTH + TOGGLE_GAP;
 
         addRenderableWidget(Button.builder(toggleText("DonationAlerts", config.donationAlertsEnabled), button -> {
             config.donationAlertsEnabled = !config.donationAlertsEnabled;
             button.setMessage(toggleText("DonationAlerts", config.donationAlertsEnabled));
             configStore.save();
-        }).bounds(LEFT, TOP, 160, 20).build());
+        }).bounds(LEFT, TOP, TOGGLE_WIDTH, 20).build());
 
         addRenderableWidget(Button.builder(toggleText("Overlay", config.overlayEnabled), button -> {
             config.overlayEnabled = !config.overlayEnabled;
             button.setMessage(toggleText("Overlay", config.overlayEnabled));
             configStore.save();
-        }).bounds(LEFT + 168, TOP, 120, 20).build());
+        }).bounds(rightColumnX, TOP, TOGGLE_WIDTH, 20).build());
 
         addRenderableWidget(Button.builder(toggleText("Chat", config.chatMessagesEnabled), button -> {
             config.chatMessagesEnabled = !config.chatMessagesEnabled;
             button.setMessage(toggleText("Chat", config.chatMessagesEnabled));
             configStore.save();
-        }).bounds(LEFT, TOP + 28, 120, 20).build());
+        }).bounds(LEFT, TOP + 28, TOGGLE_WIDTH, 20).build());
 
         addRenderableWidget(Button.builder(toggleText("Animation", config.animationEnabled), button -> {
             config.animationEnabled = !config.animationEnabled;
             button.setMessage(toggleText("Animation", config.animationEnabled));
             configStore.save();
-        }).bounds(LEFT + 128, TOP + 28, 160, 20).build());
+        }).bounds(rightColumnX, TOP + 28, TOGGLE_WIDTH, 20).build());
 
         clientIdBox = new EditBox(this.font, LEFT, CLIENT_ID_BOX_Y, 118, 20, Component.translatable("screen.donat_events.client_id"));
         clientIdBox.setMaxLength(32);
@@ -203,7 +207,7 @@ public final class DonatEventsConfigScreen extends Screen {
             this.font,
             clipped(Component.literal(snapshot.message()), Math.min(360, this.width - LEFT - 8)),
             LEFT,
-            80,
+            STATUS_Y,
             snapshot.ok() ? ARGB.color(255, 98, 255, 148) : ARGB.color(255, 255, 221, 94),
             true
         );

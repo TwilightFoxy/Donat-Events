@@ -13,14 +13,14 @@ public final class DonationChatRenderer {
             return;
         }
 
-        MutableComponent message = Component.literal("[DonationAlerts] ")
+        MutableComponent message = Component.literal("[DA] ")
             .withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD)
-            .append(Component.literal(donation.username()).withStyle(ChatFormatting.AQUA))
-            .append(Component.literal(" donated ").withStyle(ChatFormatting.WHITE))
+            .append(Component.literal(donation.username()).withStyle(ChatFormatting.AQUA, ChatFormatting.BOLD))
+            .append(Component.literal(": ").withStyle(ChatFormatting.GRAY))
             .append(Component.literal(donation.amountText()).withStyle(ChatFormatting.GREEN, ChatFormatting.BOLD));
 
         if (!donation.message().isBlank()) {
-            message.append(Component.literal(": ").withStyle(ChatFormatting.GRAY))
+            message.append(Component.literal(" - ").withStyle(ChatFormatting.GRAY))
                 .append(Component.literal(donation.message()).withStyle(ChatFormatting.LIGHT_PURPLE));
         }
 
